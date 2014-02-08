@@ -4,6 +4,9 @@
 #include <omp.h>
 #include "Chrono.hpp"
 
+
+unsigned long gP;
+
 // Programme qui trouve à l'aide de la passoire d'Ératosthène,
 // tous les nombres premiers inférieurs à un certain seuil
 // spécifié sur la ligne de commande.
@@ -25,12 +28,17 @@ int main(int argc, char *argv[])
     assert(lFlags != 0);
 
     // Appliquer la passoire d'Ératosthène
-    #pragma omp parallel for schedule(dynamic)
-    for (unsigned long p=2; p < lMax; p++) {
-        if (lFlags[p] == 0) {
-            // invalider tous les multiples
-            for (unsigned long i=2; i*p < lMax; i++) {
-                lFlags[i*p]++;
+    #pragma omp parallel
+    {
+        int numThreads = omp_get_num_threads();
+        printf("Num threads; %d\n", numThreads);
+        #pragma omp parallel for schedule(dynamic) shared(gP)
+        for (gP = 2; gP < lMax; gP++) {
+            if (lFlags[gP] == 0) {
+                // invalider tous les multiples
+                for (unsigned long i=2; i*gP < lMax; i++) {
+                    lFlags[i*gP]++;
+                }
             }
         }
     }
