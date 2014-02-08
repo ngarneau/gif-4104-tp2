@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <omp.h>
 #include "Chrono.hpp"
 
 // Programme qui trouve à l'aide de la passoire d'Ératosthène,
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
     assert(lFlags != 0);
 
     // Appliquer la passoire d'Ératosthène
+    #pragma omp parallel for schedule(dynamic)
     for (unsigned long p=2; p < lMax; p++) {
         if (lFlags[p] == 0) {
             // invalider tous les multiples
