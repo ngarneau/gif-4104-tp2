@@ -31,14 +31,11 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# Escaping for special characters.
-EQUALS = =
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ngarneau/Documents/School/GIF-4104/TP2
+CMAKE_SOURCE_DIR = /home/eymeric/prog/tp2/gif-4104-tp2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ngarneau/Documents/School/GIF-4104/TP2
+CMAKE_BINARY_DIR = /home/eymeric/prog/tp2/gif-4104-tp2
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tp1.dir/depend.make
@@ -51,17 +48,17 @@ include CMakeFiles/tp1.dir/flags.make
 
 CMakeFiles/tp1.dir/premiers.cpp.o: CMakeFiles/tp1.dir/flags.make
 CMakeFiles/tp1.dir/premiers.cpp.o: premiers.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ngarneau/Documents/School/GIF-4104/TP2/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/eymeric/prog/tp2/gif-4104-tp2/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/tp1.dir/premiers.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tp1.dir/premiers.cpp.o -c /home/ngarneau/Documents/School/GIF-4104/TP2/premiers.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tp1.dir/premiers.cpp.o -c /home/eymeric/prog/tp2/gif-4104-tp2/premiers.cpp
 
 CMakeFiles/tp1.dir/premiers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tp1.dir/premiers.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ngarneau/Documents/School/GIF-4104/TP2/premiers.cpp > CMakeFiles/tp1.dir/premiers.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/eymeric/prog/tp2/gif-4104-tp2/premiers.cpp > CMakeFiles/tp1.dir/premiers.cpp.i
 
 CMakeFiles/tp1.dir/premiers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tp1.dir/premiers.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ngarneau/Documents/School/GIF-4104/TP2/premiers.cpp -o CMakeFiles/tp1.dir/premiers.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/eymeric/prog/tp2/gif-4104-tp2/premiers.cpp -o CMakeFiles/tp1.dir/premiers.cpp.s
 
 CMakeFiles/tp1.dir/premiers.cpp.o.requires:
 .PHONY : CMakeFiles/tp1.dir/premiers.cpp.o.requires
@@ -97,6 +94,6 @@ CMakeFiles/tp1.dir/clean:
 .PHONY : CMakeFiles/tp1.dir/clean
 
 CMakeFiles/tp1.dir/depend:
-	cd /home/ngarneau/Documents/School/GIF-4104/TP2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ngarneau/Documents/School/GIF-4104/TP2 /home/ngarneau/Documents/School/GIF-4104/TP2 /home/ngarneau/Documents/School/GIF-4104/TP2 /home/ngarneau/Documents/School/GIF-4104/TP2 /home/ngarneau/Documents/School/GIF-4104/TP2/CMakeFiles/tp1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eymeric/prog/tp2/gif-4104-tp2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eymeric/prog/tp2/gif-4104-tp2 /home/eymeric/prog/tp2/gif-4104-tp2 /home/eymeric/prog/tp2/gif-4104-tp2 /home/eymeric/prog/tp2/gif-4104-tp2 /home/eymeric/prog/tp2/gif-4104-tp2/CMakeFiles/tp1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tp1.dir/depend
 

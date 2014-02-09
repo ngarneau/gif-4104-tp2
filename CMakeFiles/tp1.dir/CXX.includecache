@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/ngarneau/Documents/School/GIF-4104/TP2/premiers.cpp
+/home/eymeric/prog/tp2/gif-4104-tp2/Chrono.hpp
+chrono
+-
+
+/home/eymeric/prog/tp2/gif-4104-tp2/premiers.cpp
 stdio.h
 -
 stdlib.h
 -
 assert.h
 -
+omp.h
+-
 Chrono.hpp
-/home/ngarneau/Documents/School/GIF-4104/TP2/Chrono.hpp
+/home/eymeric/prog/tp2/gif-4104-tp2/Chrono.hpp
 

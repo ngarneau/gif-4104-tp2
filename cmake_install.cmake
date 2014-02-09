@@ -1,4 +1,4 @@
-# Install script for directory: /home/ngarneau/Documents/School/GIF-4104/TP2
+# Install script for directory: /home/eymeric/prog/tp2/gif-4104-tp2
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/ngarneau/Documents/School/GIF-4104/TP2/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/eymeric/prog/tp2/gif-4104-tp2/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/ngarneau/Documents/School/GIF-4104/TP2/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/eymeric/prog/tp2/gif-4104-tp2/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
