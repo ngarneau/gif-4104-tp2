@@ -8,6 +8,9 @@
 // tous les nombres premiers inférieurs à un certain seuil
 // spécifié sur la ligne de commande.
 // Attention, ce programme n'est aucunement optimisé!
+
+#pragma omp default(private)
+
 int main(int argc, char *argv[])
 {
     // Déterminer la limite supérieure pour la recherche;
@@ -26,14 +29,17 @@ int main(int argc, char *argv[])
 
     // Appliquer la passoire d'Ératosthène
 #pragma omp parallel shared(p)
-    for (unsigned long p=2; p < lMax; p++) {
-        if (lFlags[p] == 0) {
-            // invalider tous les multiples
-            for (unsigned long i=2; i*p < lMax; i++) {
-                lFlags[i*p]++;
-            }
-        }
-    }
+	{
+#pragma omp for schedule(dynamic)
+	    for (unsigned long p=2; p < lMax; p++) {
+		if (lFlags[p] == 0) {
+		    // invalider tous les multiples
+		    for (unsigned long i=2; i*p < lMax; i++) {
+		        lFlags[i*p]++;
+		    }
+		}
+	    }
+	}
 
     // Arrêter le chronomètre
     lChrono.pause();
