@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <omp.h>
+#include <math.h>
 #include "Chrono.hpp"
 
 
@@ -27,16 +28,23 @@ int main(int argc, char *argv[])
     char *lFlags = (char*) calloc(lMax, sizeof(*lFlags));
     assert(lFlags != 0);
 
+    unsigned long lastSquared = sqrt(lMax) + 1;
+    printf("Last sqrt: %lu\n", lastSquared);
+
     // Appliquer la passoire d'Ératosthène
     #pragma omp parallel
     {
         int numThreads = omp_get_num_threads();
         printf("Num threads; %d\n", numThreads);
+
         #pragma omp parallel for schedule(dynamic) shared(gP)
-        for (gP = 2; gP < lMax; gP++) {
+        for (gP = 2; gP <= lastSquared; gP++) {
             if (lFlags[gP] == 0) {
                 // invalider tous les multiples
-                for (unsigned long i=2; i*gP < lMax; i++) {
+                unsigned long i;
+                unsigned long maxVal = lMax/gP;
+                #pragma omp parallel for schedule(dynamic) shared(i)
+                for (i = gP; i < maxVal; i++) {
                     lFlags[i*gP]++;
                 }
             }
