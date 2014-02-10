@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
 
     Chrono lChronoEven(true);
     // Process even numbers first
-    #pragma omp parallel
+    unsigned long i;
+    #pragma omp parallel shared(i)
     {
-        unsigned long i;
-        #pragma omp parallel for schedule(static) shared(i)
+        #pragma omp for nowait schedule(static)
         for (i=4; i < lMax; i+=2) {
             lFlags[i]++;
         }
@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 
     Chrono lChronoOdd(true);
     // Process odd numbers
-    #pragma omp parallel
+    #pragma omp parallel shared(gP)
     {
-        #pragma omp parallel for schedule(static) shared(gP)
+        #pragma omp for schedule(static)
         for (gP = 3; gP <= lastSquared; gP+=2) {
             if (lFlags[gP] == 0) {
                 // invalider tous les multiples
