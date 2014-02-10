@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     // Appliquer la passoire d'Ératosthène
 #pragma omp parallel shared(p)
 	{
-#pragma omp for schedule(dynamic)
+#pragma omp for schedule(static)
 	    for (unsigned long p=2; p < lMax; p++) {
 		if (lFlags[p] == 0) {
 		    // invalider tous les multiples
