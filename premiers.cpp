@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
     char *lFlags = (char*) calloc(lMax, sizeof(*lFlags));
     assert(lFlags != 0);
 
-    Chrono lChronoEven(true);
     // Process even numbers first
     unsigned long i;
     #pragma omp parallel shared(i)
@@ -39,11 +38,9 @@ int main(int argc, char *argv[])
             lFlags[i]++;
         }
     }
-    fprintf(stderr, "Temps d'execution even = %f sec\n", lChronoEven.get());
 
     unsigned long lastSquared = sqrt(lMax) + 1;
 
-    Chrono lChronoOdd(true);
     // Process odd numbers
     #pragma omp parallel shared(gP) private(i)
     {
@@ -57,14 +54,13 @@ int main(int argc, char *argv[])
             }
         }
     }
-    fprintf(stderr, "Temps d'execution odd = %f sec\n", lChronoOdd.get());
 
     // Arrêter le chronomètre
     lChrono.pause();
 
     // Afficher les nombres trouvés à la console
     for (unsigned long p=2; p<lMax; p++) {
-        //if (lFlags[p] == 0) printf("%ld ", p);
+        if (lFlags[p] == 0) printf("%ld ", p);
     }
     printf("\n");
 
