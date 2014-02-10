@@ -28,13 +28,24 @@ int main(int argc, char *argv[])
     char *lFlags = (char*) calloc(lMax, sizeof(*lFlags));
     assert(lFlags != 0);
 
-    unsigned long lastSquared = sqrt(lMax) + 1;
 
-    // Appliquer la passoire d'Ératosthène
+    // Process even numbers first
     #pragma omp parallel
     {
-        #pragma omp parallel for schedule(dynamic) shared(gP)
-        for (gP = 2; gP <= lastSquared; gP++) {
+        unsigned long i;
+        #pragma omp parallel for schedule(static) shared(i)
+        for (i=4; i < lMax; i+=2) {
+            lFlags[i]++;
+        }
+    }
+
+    unsigned long lastSquared = sqrt(lMax) + 1;
+
+    // Process odd numbers
+    #pragma omp parallel
+    {
+        #pragma omp parallel for schedule(static) shared(gP)
+        for (gP = 3; gP <= lastSquared; gP+=2) {
             if (lFlags[gP] == 0) {
                 // invalider tous les multiples
                 for (unsigned long i = gP; i*gP < lMax; i++) {
