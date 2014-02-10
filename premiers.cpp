@@ -9,6 +9,8 @@
 // spécifié sur la ligne de commande.
 // Attention, ce programme n'est aucunement optimisé!
 
+unsigned long Gp;
+
 #pragma omp default(private)
 
 int main(int argc, char *argv[])
@@ -28,14 +30,14 @@ int main(int argc, char *argv[])
     assert(lFlags != 0);
 
     // Appliquer la passoire d'Ératosthène
-#pragma omp parallel shared(p)
+#pragma omp parallel shared(Gp)
 	{
-#pragma omp for schedule(static)
-	    for (unsigned long p=2; p < lMax; p++) {
-		if (lFlags[p] == 0) {
+#pragma omp for schedule(dynamic)
+	    for (unsigned long Gp=2; Gp < lMax; Gp++) {
+		if (lFlags[Gp] == 0) {
 		    // invalider tous les multiples
-		    for (unsigned long i=2; i*p < lMax; i++) {
-		        lFlags[i*p]++;
+		    for (unsigned long i=2; i*Gp < lMax; i++) {
+		        lFlags[i*Gp]++;
 		    }
 		}
 	    }
