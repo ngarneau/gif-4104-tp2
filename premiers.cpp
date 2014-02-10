@@ -22,6 +22,13 @@ int main(int argc, char *argv[])
         lMax = atol(argv[1]);
     }
 
+    // Déterminer le nombre de threads
+    int lThreads = 1; // par défault = 1
+    if (argc >= 3) {
+        lThreads = atoi(argv[2]);
+    }
+    omp_set_num_threads(lThreads);
+
     // Démarrer le chronomètre
     Chrono lChrono(true);
 
