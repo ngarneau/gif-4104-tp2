@@ -14,6 +14,7 @@ unsigned long gP;
 // Attention, ce programme n'est aucunement optimisé!
 int main(int argc, char *argv[])
 {
+
     // Déterminer la limite supérieure pour la recherche;
     // par défaut, prendre 1000
     unsigned long lMax = 1000;
@@ -44,9 +45,9 @@ int main(int argc, char *argv[])
 
     Chrono lChronoOdd(true);
     // Process odd numbers
-    #pragma omp parallel shared(gP)
+    #pragma omp parallel shared(gP) private(i)
     {
-        #pragma omp for schedule(static)
+        #pragma omp for schedule(dynamic)
         for (gP = 3; gP <= lastSquared; gP+=2) {
             if (lFlags[gP] == 0) {
                 // invalider tous les multiples
