@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <omp.h>
+#include <math.h>
 #include "Chrono.hpp"
+
+
+unsigned long gP;
 
 // Programme qui trouve à l'aide de la passoire d'Ératosthène,
 // tous les nombres premiers inférieurs à un certain seuil
@@ -9,6 +14,7 @@
 // Attention, ce programme n'est aucunement optimisé!
 int main(int argc, char *argv[])
 {
+
     // Déterminer la limite supérieure pour la recherche;
     // par défaut, prendre 1000
     unsigned long lMax = 1000;
@@ -23,12 +29,28 @@ int main(int argc, char *argv[])
     char *lFlags = (char*) calloc(lMax, sizeof(*lFlags));
     assert(lFlags != 0);
 
-    // Appliquer la passoire d'Ératosthène
-    for (unsigned long p=2; p < lMax; p++) {
-        if (lFlags[p] == 0) {
-            // invalider tous les multiples
-            for (unsigned long i=2; i*p < lMax; i++) {
-                lFlags[i*p]++;
+    // Process even numbers first
+    unsigned long i;
+    #pragma omp parallel shared(i)
+    {
+        #pragma omp for nowait schedule(static)
+        for (i=4; i < lMax; i+=2) {
+            lFlags[i]++;
+        }
+    }
+
+    unsigned long lastSquared = sqrt(lMax) + 1;
+
+    // Process odd numbers
+    #pragma omp parallel shared(gP) private(i)
+    {
+        #pragma omp for schedule(dynamic)
+        for (gP = 3; gP <= lastSquared; gP+=2) {
+            if (lFlags[gP] == 0) {
+                // invalider tous les multiples
+                for (unsigned long i = gP; i*gP < lMax; i+=2) {
+                    lFlags[i*gP]++;
+                }
             }
         }
     }

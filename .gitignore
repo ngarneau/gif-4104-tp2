@@ -20,8 +20,8 @@
 *.out
 *.app
 
-# Executable tp1
-tp1
+# Executable tp2
+tp2
 
 # Cmake
 CMakeCache.txt

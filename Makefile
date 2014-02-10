@@ -99,24 +99,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named tp1
+# Target rules for targets named tp2
 
 # Build rule for target.
-tp1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tp1
-.PHONY : tp1
+tp2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tp2
+.PHONY : tp2
 
 # fast build rule for target.
-tp1/fast:
-	$(MAKE) -f CMakeFiles/tp1.dir/build.make CMakeFiles/tp1.dir/build
-.PHONY : tp1/fast
+tp2/fast:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/build
+.PHONY : tp2/fast
 
 premiers.o: premiers.cpp.o
 .PHONY : premiers.o
 
 # target to build an object file
 premiers.cpp.o:
-	$(MAKE) -f CMakeFiles/tp1.dir/build.make CMakeFiles/tp1.dir/premiers.cpp.o
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/premiers.cpp.o
 .PHONY : premiers.cpp.o
 
 premiers.i: premiers.cpp.i
@@ -124,7 +124,7 @@ premiers.i: premiers.cpp.i
 
 # target to preprocess a source file
 premiers.cpp.i:
-	$(MAKE) -f CMakeFiles/tp1.dir/build.make CMakeFiles/tp1.dir/premiers.cpp.i
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/premiers.cpp.i
 .PHONY : premiers.cpp.i
 
 premiers.s: premiers.cpp.s
@@ -132,7 +132,7 @@ premiers.s: premiers.cpp.s
 
 # target to generate assembly for a file
 premiers.cpp.s:
-	$(MAKE) -f CMakeFiles/tp1.dir/build.make CMakeFiles/tp1.dir/premiers.cpp.s
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/premiers.cpp.s
 .PHONY : premiers.cpp.s
 
 # Help Target
@@ -143,7 +143,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... tp1"
+	@echo "... tp2"
 	@echo "... premiers.o"
 	@echo "... premiers.i"
 	@echo "... premiers.s"
